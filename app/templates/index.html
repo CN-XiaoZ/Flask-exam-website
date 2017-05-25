@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block page_content %}
+    <div class="col-md-8">
+            <div class="act">
+                <h1>欢迎参加E志者精品课程结业考试</h1>
+            </div>
+    <div>
+        <hr>
+    {% if current_user.is_authenticated %}
+        <p>您已经登入,请按下方按钮进入考试界面</p>
+    {% else %}
+        您还没有登入,请点击 <a href="{{ url_for('main.login') }}">登入</a>
+    {% endif %}
+    <a href="{{ url_for('main.Before') }}">考试</a>
+    </div>
+    </div>
+
+{% endblock %}

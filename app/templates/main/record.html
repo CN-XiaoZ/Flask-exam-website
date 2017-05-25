@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{%  block page_content%}
+<div>
+<h1>{{ result.Stem }}</h1>
+    <h2>A. {{ result.Select_1 }}</h2>
+    <h2>B. {{ result.Select_2 }}</h2>
+    <h2>C. {{ result.Select_3 }}</h2>
+    <h2>D. {{ result.Select_4 }}</h2>
+</div>
+{{ wtf.quick_form(form) }}
+<h3>第{{page}}页</h3>
+{% if result.id!=1 %}
+<a href="{{ url_for('main.record',page=result.id-1) }}">上一题</a>
+{% endif %}
+{% if result.id!=10 %}
+<a href="{{ url_for('main.record',page=result.id+1) }}">下一题</a>
+{% endif %}
+    {% if result.id ==10 %}
+ <a href="{{ url_for('main.mark') }}">提交</a>
+{% endif %}
+{% endblock %}

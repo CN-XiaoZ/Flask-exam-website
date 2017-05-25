@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    {% if current_user.is_authenticated %}
+        <p>感谢登入</p>
+    {% else %}
+        您还没有登入,请点击 <a href="{{ url_for('admin.login') }}">登入</a>
+    {% endif %}
+{% endblock %}
