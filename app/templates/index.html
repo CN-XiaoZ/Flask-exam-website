@@ -8,11 +8,14 @@
     <div>
         <hr>
     {% if current_user.is_authenticated %}
-        <p>您已经登入,请按下方按钮进入考试界面</p>
+        <h4>您已经登入,请按下方按钮进入考试界面</h4>
+        <br>
+        <a type="button" class="btn btn-default" href="{{ url_for('main.Before') }}">考试</a>
     {% else %}
-        您还没有登入,请点击 <a href="{{ url_for('main.login') }}">登入</a>
+        <h4>您还没有登入,请点击下方按钮登入</h4>
+        <br>
+        <a type="button" class="btn btn-default" href="{{ url_for('main.login') }}">登入</a>
     {% endif %}
-    <a href="{{ url_for('main.Before') }}">考试</a>
     </div>
     </div>
 

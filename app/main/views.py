@@ -2,10 +2,20 @@
 from . import main
 from flask import render_template, flash, redirect, url_for, request,session,make_response
 from flask_login import login_required, current_user, login_user, logout_user
-from forms import LoginForm,Answer
-from ..models import Marks_record , User , Question
+from forms import LoginForm,Answer,RegistrationForm
+from ..models import Marks_record , User, Question
 from .. import db
 from flask import current_app
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+
+def Admin_Rquire():
+    PER=User.query.filter_by(username=session.get('name')).first()
+    if PER.permission==0:
+        return 1
+    return 0
 
 @main.route('/')
 def index():
@@ -73,9 +83,40 @@ def mark():
 def Before():
     return render_template('main/Before_exam.html')
 
+@main.route('/add', methods=['GET', 'POST'])
+def register():
+    if Admin_Rquire()==1:
+        register_key = 'zhucema'
+        form = RegistrationForm()
+        if form.validate_on_submit():
+            if form.registerkey.data != register_key:
+                flash(u'注册码不符，请返回重试')
+                return redirect(url_for('main.register'))
+            else:
+                if form.password.data != form.password2.data:
+                    flash(u'两次输入密码不一')
+                    return redirect(url_for('main.register'))
+                else:
+                    try:
+                        user = User(username=form.username.data, permission=1, password=form.password.data)
+                        print(user.password_hash)
+                        print(user.permission)
+                        print(user.username)
+                        db.session.add(user)
+                        print('done')
+                        print('done')
+                        flash(u'您已经成功注册')
+                        return redirect(url_for('main.login'))
+                    except:
+                        db.session.rollback()
+                        flash(u'用户名已存在')
+        return render_template('main/register.html', form=form)
+    if Admin_Rquire()==0:
+        return redirect(url_for('main.index'))
 @main.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash(u'您已经登出了系统')
     return redirect(url_for('main.login'))
+
