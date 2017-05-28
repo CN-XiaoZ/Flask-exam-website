@@ -10,12 +10,40 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
+def Admin_Rquire(func):
+    def ADMIN(*args, **kwargs):
+        PER = User.query.filter_by(username=session.get('name')).first()
+        if PER.permission==0:
+            return func(*args, **kwargs)
+        else:
+            flash(u'你不是管理员')
+            return redirect(url_for('main.index'))
+    return ADMIN
+#     def ADMIN(*args, **kwargs):
+#         PER = User.query.filter_by(username=session.get('name')).first()
+#         if not current_user.is_authenticated:
+#             return func(*args, **kwargs)
+#         elif PER.Permission==0:
+#             return func(*args, **kwargs)
+        # if not current_user.is_authenticated:
+        #     return func(*args, **kwargs)
+        # else:
+        #     PER = User.query.filter_by(username=session.get('name')).first()
+        #     if PER.Permission==0:
+        #         return func(*args, **kwargs)
+        #     else:
+        #         return redirect(url_for('main.index'))
+        # return func(*args, **kwargs)
 
-def Admin_Rquire():
-    PER=User.query.filter_by(username=session.get('name')).first()
-    if PER.permission==0:
-        return 1
-    return 0
+        # if request.method in EXEMPT_METHODS:
+        #     return func(*args, **kwargs)
+        # elif current_app.login_manager._login_disabled:
+        #     return func(*args, **kwargs)
+        # elif not current_user.is_authenticated:
+        #     return current_app.login_manager.unauthorized()
+        # return func(*args, **kwargs)
+    # return ADMIN
+
 
 @main.route('/')
 def index():
@@ -83,36 +111,36 @@ def mark():
 def Before():
     return render_template('main/Before_exam.html')
 
-@main.route('/add', methods=['GET', 'POST'])
+
+@main.route('/register', methods=['GET', 'POST'])
+@Admin_Rquire
 def register():
-    if Admin_Rquire()==1:
-        register_key = 'zhucema'
-        form = RegistrationForm()
-        if form.validate_on_submit():
-            if form.registerkey.data != register_key:
-                flash(u'注册码不符，请返回重试')
+    register_key = 'zhucema'
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        if form.registerkey.data != register_key:
+            flash(u'注册码不符，请返回重试')
+            return redirect(url_for('main.register'))
+        else:
+            if form.password.data != form.password2.data:
+                flash(u'两次输入密码不一')
                 return redirect(url_for('main.register'))
             else:
-                if form.password.data != form.password2.data:
-                    flash(u'两次输入密码不一')
-                    return redirect(url_for('main.register'))
-                else:
-                    try:
-                        user = User(username=form.username.data, permission=1, password=form.password.data)
-                        print(user.password_hash)
-                        print(user.permission)
-                        print(user.username)
-                        db.session.add(user)
-                        print('done')
-                        print('done')
-                        flash(u'您已经成功注册')
-                        return redirect(url_for('main.login'))
-                    except:
-                        db.session.rollback()
-                        flash(u'用户名已存在')
-        return render_template('main/register.html', form=form)
-    if Admin_Rquire()==0:
-        return redirect(url_for('main.index'))
+                try:
+                    user = User(username=form.username.data, permission=1, password=form.password.data)
+                    print(user.password_hash)
+                    print(user.permission)
+                    print(user.username)
+                    db.session.add(user)
+                    print('done')
+                    print('done')
+                    flash(u'您已经成功注册')
+                    return redirect(url_for('main.login'))
+                except:
+                    db.session.rollback()
+                    flash(u'用户名已存在')
+    return render_template('main/register.html', form=form)
+
 @main.route('/logout')
 @login_required
 def logout():
