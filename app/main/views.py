@@ -5,12 +5,14 @@ from flask_login import login_required, current_user, login_user, logout_user
 from forms import LoginForm,Answer,RegistrationForm
 from ..models import Marks_record , User, Question
 from .. import db
+from functools import wraps
 from flask import current_app
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 def Admin_Rquire(func):
+    @wraps(func)
     def ADMIN(*args, **kwargs):
         PER = User.query.filter_by(username=session.get('name')).first()
         if PER.permission==0:
