@@ -21,31 +21,6 @@ def Admin_Rquire(func):
             flash(u'你不是管理员')
             return redirect(url_for('main.index'))
     return ADMIN
-#     def ADMIN(*args, **kwargs):
-#         PER = User.query.filter_by(username=session.get('name')).first()
-#         if not current_user.is_authenticated:
-#             return func(*args, **kwargs)
-#         elif PER.Permission==0:
-#             return func(*args, **kwargs)
-        # if not current_user.is_authenticated:
-        #     return func(*args, **kwargs)
-        # else:
-        #     PER = User.query.filter_by(username=session.get('name')).first()
-        #     if PER.Permission==0:
-        #         return func(*args, **kwargs)
-        #     else:
-        #         return redirect(url_for('main.index'))
-        # return func(*args, **kwargs)
-
-        # if request.method in EXEMPT_METHODS:
-        #     return func(*args, **kwargs)
-        # elif current_app.login_manager._login_disabled:
-        #     return func(*args, **kwargs)
-        # elif not current_user.is_authenticated:
-        #     return current_app.login_manager.unauthorized()
-        # return func(*args, **kwargs)
-    # return ADMIN
-
 
 @main.route('/')
 def index():
