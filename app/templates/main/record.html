@@ -15,10 +15,10 @@
 {% if result.id!=1 %}
 <a  type="button" class="btn btn-default" href="{{ url_for('main.record',page=result.id-1) }}">上一题</a>
 {% endif %}
-{% if result.id!=10 %}
+{% if result.id!=20 %}
 <a type="button" class="btn btn-default" href="{{ url_for('main.record',page=result.id+1) }}">下一题</a>
 {% endif %}
-    {% if result.id ==10 %}
+    {% if result.id ==20 %}
  <a type="button" class="btn btn-default" href="{{ url_for('main.mark') }}">提交</a>
 {% endif %}
     </div>

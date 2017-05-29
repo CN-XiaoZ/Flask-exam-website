@@ -42,11 +42,12 @@ def login():
 @main.route('/record/int:<page>', methods=['GET', 'POST'])
 @login_required
 def record(page):
-    t = session.get('done')
-    if t==1:
+    A = User.query.filter_by(username=session.get('name')).first()
+    a=A.list.split(' ')
+    if A.done==1:
         return redirect(url_for('main.mark'))
     form=Answer()
-    Right=Question.query.filter_by(id=page).first()
+    result=Question.query.filter_by(id=a[page-1]).first()
     if form.validate_on_submit():
         t = session.get('done')
         if t == 1:
@@ -60,27 +61,27 @@ def record(page):
             a=3
         else:
             a=4
-        record = Marks_record(username=session.get('name'),Q_ID=page,Select=form.answer.data,mark=(a==Right.Select_Right))
+        record = Marks_record(username=session.get('name'),Q_ID=page,Select=form.answer.data,mark=(a==result.Select_Right))
         db.session.add(record)
         flash(u'答案提交成功')
-    result = Question.query.filter_by(id=page).first()
     return render_template('main/record.html', result=result,page=page,form=form)
 
 @main.route('/mark', methods=['GET', 'POST'])
 @login_required
 def mark():
     marks=0
+    A = User.query.filter_by(username=session.get('name')).first()
+    a=A.list.split(' ')
     for i in range(1, 11):
-        results = Marks_record.query.filter_by(username=session.get('name'),Q_ID=i).order_by(-Marks_record.id).first()
-        print('1')
+        results = Marks_record.query.filter_by(username=session.get('name'),Q_ID=a[i-1]).order_by(-Marks_record.id).first()
         if (results == None):
-            print('0')
+            flash(u'你还有题目没有回答,跳转至未回答页')
             return redirect(url_for('main.record', page=i))
         else:
             if (results.mark == '1'):
-                marks = marks + 1
-    session["done"] = 1  # 设置session'
-
+                marks = marks + 5
+    A.done=1
+    db.session.commit(A)
     return render_template('main/mark.html', mark=marks)
 
 @main.route('/Before_exam', methods=['GET', 'POST'])

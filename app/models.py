@@ -20,6 +20,8 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64))
     permission = db.Column(db.Integer)
     password_hash = db.Column(db.String(128))
+    list = db.Column(db.Text)
+    done = db.Column(db.Integer)
 
     @property
     def password(self):
@@ -43,6 +45,7 @@ class Question(db.Model):
     Select_3 = db.Column(db.Text)
     Select_4 = db.Column(db.Text)
     Select_Right = db.Column(db.Integer)
+
 
 @login_manager.user_loader
 def load_user(user_id):
