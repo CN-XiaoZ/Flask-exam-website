@@ -14,7 +14,7 @@ class LoginForm(Form):
     password = PasswordField(u'密码', validators=[Required()])
     submit = SubmitField(u'登入')
 class Answer(Form):
-    answer= StringField(u'答案,只允许填入A,B,C,D',validators=[AnyOf(values=['A','B','C','D'], message='只允许填入A,B,C,D')])
+    answer= StringField(u'答案,只允许填入A,B,C,D',validators=[AnyOf(values=['A','B','C','D'], message=u'只允许填入A,B,C,D')])
     submit = SubmitField(u'确认')
 
 class RegistrationForm(Form):

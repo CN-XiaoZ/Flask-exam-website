@@ -12,14 +12,12 @@
 {{ wtf.quick_form(form) }}
 <h3>第{{page}}页</h3>
     <div class="btn-group">
-{% if result.id!=1 %}
-<a  type="button" class="btn btn-default" href="{{ url_for('main.record',page=result.id-1) }}">上一题</a>
+{% if page!=1 %}
+<a  type="button" class="btn btn-default" href="{{ url_for('main.record',page=page-1) }}">上一题</a>
 {% endif %}
-{% if result.id!=20 %}
-<a type="button" class="btn btn-default" href="{{ url_for('main.record',page=result.id+1) }}">下一题</a>
+{% if page!=20 %}
+<a type="button" class="btn btn-default" href="{{ url_for('main.record',page=page+1) }}">下一题</a>
 {% endif %}
-    {% if result.id ==20 %}
  <a type="button" class="btn btn-default" href="{{ url_for('main.mark') }}">提交</a>
-{% endif %}
     </div>
 {% endblock %}

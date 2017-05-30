@@ -7,6 +7,7 @@ from ..models import Marks_record , User, Question
 from .. import db
 from functools import wraps
 from flask import current_app
+import string
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -47,6 +48,8 @@ def record(page):
     if A.done==1:
         return redirect(url_for('main.mark'))
     form=Answer()
+    page=int(page)
+    print(page)
     result=Question.query.filter_by(id=a[page-1]).first()
     if form.validate_on_submit():
         t = session.get('done')
@@ -71,9 +74,11 @@ def record(page):
 def mark():
     marks=0
     A = User.query.filter_by(username=session.get('name')).first()
-    a=A.list.split(' ')
-    for i in range(1, 11):
-        results = Marks_record.query.filter_by(username=session.get('name'),Q_ID=a[i-1]).order_by(-Marks_record.id).first()
+    b=A.list
+    a=b.split(' ')
+    for i in range(1, 21):
+        print(i)
+        results = Marks_record.query.filter_by(username=session.get('name'),Q_ID=i).order_by(-Marks_record.id).first()
         if (results == None):
             flash(u'你还有题目没有回答,跳转至未回答页')
             return redirect(url_for('main.record', page=i))
@@ -81,7 +86,7 @@ def mark():
             if (results.mark == '1'):
                 marks = marks + 5
     A.done=1
-    db.session.commit(A)
+    db.session.commit()
     return render_template('main/mark.html', mark=marks)
 
 @main.route('/Before_exam', methods=['GET', 'POST'])
