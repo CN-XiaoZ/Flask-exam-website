@@ -1,7 +1,7 @@
 # -*- coding=utf-8 -*-
 from flask_wtf import Form
 from ..models import Question
-from wtforms import StringField, SubmitField, PasswordField, TextAreaField,RadioField
+from wtforms import StringField, SubmitField, PasswordField, TextAreaField,RadioField,SelectField
 from wtforms.validators import Required, length, Regexp, EqualTo,AnyOf
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 import sys
@@ -14,9 +14,9 @@ class LoginForm(Form):
     password = PasswordField(u'密码', validators=[Required()])
     submit = SubmitField(u'登入')
 class Answer(Form):
-    answer= StringField(u'答案,只允许填入A,B,C,D',validators=[AnyOf(values=['A','B','C','D'], message=u'只允许填入A,B,C,D')])
+    # answer= StringField(u'答案,只允许填入A,B,C,D',validators=[AnyOf(values=['A','B','C','D'], message=u'只允许填入A,B,C,D')])
     submit = SubmitField(u'确认')
-
+    answer = SelectField(u'请选择答案', choices=[('A', 'A'), ('B', 'B'),('C', 'C'),('D', 'D')], coerce=unicode)
 class RegistrationForm(Form):
     username = StringField(u'用户名', validators=[Required(), length(2, 128)])
     password = PasswordField(
