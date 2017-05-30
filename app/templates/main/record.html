@@ -3,21 +3,46 @@
 
 {%  block page_content%}
 <div>
-<h1>{{ result.Stem }}</h1>
-    <h2>A. {{ result.Select_1 }}</h2>
-    <h2>B. {{ result.Select_2 }}</h2>
-    <h2>C. {{ result.Select_3 }}</h2>
-    <h2>D. {{ result.Select_4 }}</h2>
+<h1>{{page}}. {{ result.Stem }}</h1>
+    <hr>
+    <h3>A. {{ result.Select_1 }}</h3>
+    <h3>B. {{ result.Select_2 }}</h3>
+    <h3>C. {{ result.Select_3 }}</h3>
+    <h3>D. {{ result.Select_4 }}</h3>
 </div>
+    <br>
 {{ wtf.quick_form(form) }}
-<h3>第{{page}}页</h3>
-    <div class="btn-group">
-{% if page!=1 %}
-<a  type="button" class="btn btn-default" href="{{ url_for('main.record',page=page-1) }}">上一题</a>
-{% endif %}
-{% if page!=20 %}
-<a type="button" class="btn btn-default" href="{{ url_for('main.record',page=page+1) }}">下一题</a>
-{% endif %}
- <a type="button" class="btn btn-default" href="{{ url_for('main.mark') }}">提交</a>
+
+    <div>
+    <ul class="pagination">
+        {% if page!=1 %}
+	    <li><a href="{{ url_for('main.record',page=page-1) }}">&laquo;</a></li>
+        {% endif %}
+	    <li><a href="{{ url_for('main.record',page=1) }}">1</a></li>
+        <li><a href="{{ url_for('main.record',page=2) }}">2</a></li>
+        <li><a href="{{ url_for('main.record',page=3) }}">3</a></li>
+        <li><a href="{{ url_for('main.record',page=4) }}">4</a></li>
+        <li><a href="{{ url_for('main.record',page=5) }}">5</a></li>
+        <li><a href="{{ url_for('main.record',page=6) }}">6</a></li>
+        <li><a href="{{ url_for('main.record',page=7) }}">7</a></li>
+        <li><a href="{{ url_for('main.record',page=8) }}">8</a></li>
+        <li><a href="{{ url_for('main.record',page=9) }}">9</a></li>
+        <li><a href="{{ url_for('main.record',page=10) }}">10</a></li>
+        <li><a href="{{ url_for('main.record',page=11) }}">11</a></li>
+        <li><a href="{{ url_for('main.record',page=12) }}">12</a></li>
+        <li><a href="{{ url_for('main.record',page=13) }}">13</a></li>
+        <li><a href="{{ url_for('main.record',page=14) }}">14</a></li>
+        <li><a href="{{ url_for('main.record',page=15) }}">15</a></li>
+        <li><a href="{{ url_for('main.record',page=16) }}">16</a></li>
+        <li><a href="{{ url_for('main.record',page=17) }}">17</a></li>
+        <li><a href="{{ url_for('main.record',page=18) }}">18</a></li>
+        <li><a href="{{ url_for('main.record',page=19) }}">19</a></li>
+        <li><a href="{{ url_for('main.record',page=20) }}">20</a></li>
+            {% if page!=20 %}
+	   <li><a href="{{ url_for('main.record',page=page+1) }}">&raquo;</a></li>
+        {% endif %}
+
+</ul>
     </div>
+    <a type="button" class="btn btn-default" href="{{ url_for('main.mark') }}">提交</a>
 {% endblock %}

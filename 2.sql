@@ -14,7 +14,7 @@ insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) valu
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('电脑能上QQ，不能上网 ，我们应该如何解决？请选出最简单的方式','假装没看见','查看电脑的DNS有没有设置正确','重装系统','再买一台电脑',2);
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('在命令提示符界面中，如何停止某个正在运行的命令？','ctrl+c','alt+c','ctrl+v','win+a',1);
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('勒索病毒来袭，如何正确防范？','安装最新更新，关闭相应端口，下载有名的杀毒软件防范','打开相应端口','坐以待毙','汇钱保平安',1);
-insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('电脑按下开机键没有反应不可能是什么问题','没电了','硬盘接口松动','BIOS设置有问题','有静电',3);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('电脑按下开机键没有反应可能是什么问题','BIOS电池没电','硬盘接口松动','BIOS设置问有题','有静电',3);
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('连不上ZJUWLAN可以尝试以下操作除了','netsh winsock reset','ipconfig /flushdns','查看代理','查看task manager',4);
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('下列哪个不能做到电脑防护','Ccleaner','卡巴斯基','Windows defender','小红伞',1);
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('数据误删了可以用什么','Usbcleaner','Windowsdefender','Ccleaner','EasyRecovery',4);
@@ -27,3 +27,13 @@ insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) valu
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('在格式化硬盘时，4K分区是指？','对齐分区到512扇区数的整数倍','对齐分区到1024扇区数的整数倍','对齐分区到2048扇区数的整数倍','对齐分区到4096扇区数的整数倍',4);
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('不能进入PE可能是bios里哪个选项未关闭','secure boot','PXE Boot to LAN','Intel Virtualization Technology','AC Mode Fan always on',1);
 insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('下列说法正确的是?','将u盘做成PE盘时，微PE工具箱需要放在U盘里方便提取','在PE的windows安装器工具中有三个指示灯，如果其中有黄灯就不能继续装系统','装完win7系统后不需要自己装驱动，连上网可以自动装驱动','u盘做成PE盘以后可以日常使用',4);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('最为常见的充电式led台灯损坏的原因不包括','插头与插孔接触不良','电池寿命已到','灯泡烧坏或开关损坏','内部电阻丝损坏',4);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('下列关于焊锡膏的作用叙述不正确的是','去除PCB铜膜焊盘表层及零件焊接部位的氧化物质，便于上锡。','保护和防止焊后PCB再度氧化。','降低锡、铅表面张力，降低焊点缺陷率。','改变焊锡的化学组成，提高焊点的延展性。',4);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('下列哪一项不属于寝室安全用电的具体细则？','电器使用完后应拔掉电源插头或关闭接线板上的开关','电源接线板不应该放在床上，应放在书桌安全处，原理易燃物品','在断掉跳闸时可以随意搬动电闸企图通电。','不随意在寝室更改、拆卸、安装电源电路、插座、插头等',3);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('焊接什么元件时，烙铁必须接地？','MOS管','电解电容','瓷片电容','可变电阻',1);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('焊接的一般步骤为','加热焊盘 送入焊锡丝 移开焊锡丝 移开烙铁','送入焊锡丝 加热焊盘 移开烙铁 移开焊锡丝','送入焊锡丝 加热焊盘 移开焊锡丝 移开烙铁','加热焊盘  送入焊锡丝 移开烙铁 移开焊锡丝',1);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('USB接口的供电电压为','1.5V','3.3V','5V','12V',3);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('当焊接失误，需要拆焊操作时候，除了电烙铁，我们需要用到的工具是','焊锡膏','吸锡器','焊锡丝','热胶枪',2);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('电吹风的电路元件不包括','电阻丝','稳压二极管','电机','热敏电阻',4);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('在焊接的准备、插件过程中，以下哪一步不是合理的？','安装元器件前，认真查看元器件的外观和标称值，通过仪器检查元器件的参数和性能。','在插入元件时提前剪掉过长的引脚。','元件根据外形和管脚间距弯曲成合理的形状。','先低后高，先轻后重，先易后难。',2);
+insert into question(Stem,Select_1,Select_2,Select_3,Select_4,Select_Right) values ('以下关于焊接过程的注意事项，正确的是','清洁电烙铁所使用的海绵应沾有适量的稀盐酸。','焊接过程中，可直接用手辅助固定焊接元件。','烙铁温度过低、焊盘氧化或者有油污，容易造成虚焊。','烙铁头氧化后用可以用锉刀打磨。',3);

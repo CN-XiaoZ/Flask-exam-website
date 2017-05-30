@@ -1,4 +1,4 @@
-insert into users(username,permission,password_hash,lis1t) values ('王元鸿',1,'pbkdf2:sha1:1000$Sb6dDA8S$b270b3185f96846bd575273806c0ba44dc49741e','24 26 14 35 30 22 32 36 37 3 28 5 31 25 12 16 27 2 34 21');
+insert into users(username,permission,password_hash,list) values ('王元鸿',1,'pbkdf2:sha1:1000$Sb6dDA8S$b270b3185f96846bd575273806c0ba44dc49741e','24 26 14 35 30 22 32 36 37 3 28 5 31 25 12 16 27 2 34 21');
 insert into users(username,permission,password_hash,list) values ('李城隆',1,'pbkdf2:sha1:1000$9T3tm6bJ$79f529d4ec4bfbbc38f5b934da74afbbe21953a0','16 25 20 10 36 30 24 9 22 19 13 12 34 29 6 7 2 11 35 5');
 insert into users(username,permission,password_hash,list) values ('吴威磊',1,'pbkdf2:sha1:1000$mmbIsYHW$ee7b1b91bcd94579c7b86c9675fb00b4123794d6','8 29 30 20 12 22 17 11 32 10 18 36 15 13 1 14 35 5 24 28');
 insert into users(username,permission,password_hash,list) values ('盛俊伟',1,'pbkdf2:sha1:1000$lb7DACON$be5c6567e1f26c47d14170777af925a840ffcfdc','22 16 31 33 4 30 8 15 14 23 19 35 26 2 29 18 3 36 7 28');
