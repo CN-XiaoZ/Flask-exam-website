@@ -124,6 +124,30 @@ def register():
                     flash(u'用户名已存在')
     return render_template('main/register.html', form=form)
 
+@main.route('/out', methods=['GET', 'POST'])
+#@Admin_Rquire
+def out():
+    username=[]
+    mark=[]
+    name=User.query.all()
+    marks=0
+    for name in name:
+        username.append(name.username)
+    for name in username:
+        for i in range(1, 21):
+            results = Marks_record.query.filter_by(username=name, Q_ID=i).order_by(-Marks_record.id).first()
+            if (results == None):
+                marks=0
+                break
+            else:
+                if (results.mark == '1'):
+                    marks = marks + 5
+        mark.append(marks)
+        marks=0
+    le=len(username)
+    print le
+    return render_template('main/out.html',mark=mark,username=username,len=le)
+
 @main.route('/logout')
 @login_required
 def logout():

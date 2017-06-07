@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block page_content %}
+
+    <table class="table">
+	<caption>成绩导出页面</caption>
+   <thead>
+      <tr>
+         <th>名字</th>
+         <th>分数</th>
+      </tr>
+   </thead>
+   <tbody>
+        {% for i in range(0,len) %}
+            <tr>
+                <td>{{ username[i] }}</td>
+                <td>{{ mark[i] }}</td>
+            </tr>
+        {% endfor %}
+   </tbody>
+</table>
+    <div class="col-md-6">
+    </div>
+
+{% endblock %}
