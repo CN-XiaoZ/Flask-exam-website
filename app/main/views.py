@@ -125,7 +125,7 @@ def register():
     return render_template('main/register.html', form=form)
 
 @main.route('/out', methods=['GET', 'POST'])
-#@Admin_Rquire
+@Admin_Rquire
 def out():
     username=[]
     mark=[]
