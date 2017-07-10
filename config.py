@@ -21,7 +21,7 @@ class Config:
         pass
 
 class DevelopmentConfig(Config):
-        SQLALCHEMY_DATABASE_URI = 'mysql://root:340221zyc@localhost/exam'
+        SQLALCHEMY_DATABASE_URI = 'mysql://root:********@localhost/exam'
     #SQLALCHEMY链接数据库都是以URI方式格式为'mysql://账户名:密码@地址/数据库表名'
 
 config = {
